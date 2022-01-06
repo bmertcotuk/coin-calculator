@@ -1,0 +1,51 @@
+version: '3.6'
+services:
+  db:
+    image: postgres
+    #hostname: postgres
+    container_name: coin-calculator-postgres
+    environment:
+      POSTGRES_PASSWORD: Qwer1234
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      #- 5433:5432
+      - target: 5432
+        published: 5433
+        protocol: tcp
+        mode: host
+    networks:
+      - backdb
+    expose:
+      - 5433
+  backend:
+    build:
+      context: ./backend
+      target:  finalApp
+    image: coin-calculator
+    container_name: coin-calculator
+    #environment:
+    #  WAIT_HOSTS: postgres:5433
+    ports:
+      - 8090:8090
+    depends_on:
+      - db
+    networks:
+      - frontback
+      - backdb
+  frontend:
+    build: ./frontend/ui
+    image: coin-calculator-ui
+    container_name: coin-calculator-ui
+    ports:
+      - 8080:80
+    depends_on:
+      - backend
+    networks:
+      - frontback
+
+networks:
+  backdb:
+    driver: bridge
+  frontback:
+    driver: bridge

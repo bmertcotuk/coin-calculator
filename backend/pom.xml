@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bitpace</groupId>
 	<artifactId>coincalculator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>coincalculator</name>
 	<description>Coin Calculator</description>
 	<properties>
@@ -85,5 +85,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>coin-calculator</finalName>
 	</build>
 </project>
