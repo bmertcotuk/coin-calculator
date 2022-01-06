@@ -3,19 +3,14 @@ import { createWebHistory, createRouter } from "vue-router";
 const routes =  [
     {
         path: "/",
-        alias: "/tutorials",
-        name: "tutorials",
-        component: () => import("./components/TutorialsList")
+        name: "index",
+        redirect: '/coin-calculator',
+        component: () => import("./components/ConvertCoin")
     },
     {
-        path: "/tutorials/:id",
-        name: "tutorial-details",
-        component: () => import("./components/Tutorial")
-    },
-    {
-        path: "/add",
-        name: "add",
-        component: () => import("./components/AddTutorial")
+        path: "/coin-calculator",
+        name: "coin-calculator",
+        component: () => import("./components/ConvertCoin")
     }
 ];
 

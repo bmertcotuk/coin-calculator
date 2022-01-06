@@ -12,3 +12,15 @@ spring:
                 jdbc:
                     lob:
                         non_contextual_creation: true
+
+external-api:
+    exchange-rates:
+        base-url: https://blockchain.info/
+
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 5000
+                readTimeout: 5000
+                loggerLevel: basic
