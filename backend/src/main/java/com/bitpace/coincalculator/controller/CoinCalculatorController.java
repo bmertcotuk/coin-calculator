@@ -40,7 +40,7 @@ public class CoinCalculatorController {
     public ResponseEntity<TransactionRestResponse> storeTransaction(@Valid @RequestBody TransactionRestRequest restRequest) {
         log.debug("storeTransaction::request={}", restRequest);
         final var serviceRequest = TransactionServiceRequest.fromRestRequest(restRequest);
-        final var serviceResponse = coinCalculatorService.store(serviceRequest);
+        final var serviceResponse = coinCalculatorService.storeTransaction(serviceRequest);
         log.debug("storeTransaction::serviceResponse={}", serviceResponse);
         return new ResponseEntity<>(TransactionRestResponse.fromServiceResponse(serviceResponse), HttpStatus.OK);
     }

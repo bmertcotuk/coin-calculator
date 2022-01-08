@@ -17,7 +17,7 @@
               name="input-one"
               id="input-one"
               v-model="amountOne"
-              @input="calculateResults()"
+              @change="calculateResults()"
           />
           <select
               class="select-input"

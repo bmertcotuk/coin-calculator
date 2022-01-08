@@ -11,5 +11,5 @@ import com.bitpace.coincalculator.service.model.TransactionServiceResponse;
 public interface CoinCalculatorService {
     ConversionServiceResponse convertFiatCurrency(ConversionServiceRequest conversionServiceRequest);
 
-    TransactionServiceResponse store(TransactionServiceRequest request);
+    TransactionServiceResponse storeTransaction(TransactionServiceRequest request);
 }

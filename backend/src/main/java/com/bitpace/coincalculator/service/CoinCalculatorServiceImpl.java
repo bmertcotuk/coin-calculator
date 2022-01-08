@@ -26,7 +26,8 @@ public class CoinCalculatorServiceImpl implements CoinCalculatorService {
     private final ExchangeRatesApiFeignClient exchangeRatesApiFeignClient;
 
     public ConversionServiceResponse convertFiatCurrency(ConversionServiceRequest serviceRequest) {
-        final var feignResponse = exchangeRatesApiFeignClient.convertToBtc(serviceRequest.getFiatCurrency().name(),
+        final var feignResponse = exchangeRatesApiFeignClient.convertToBtc(
+                serviceRequest.getFiatCurrency().name(),
                 serviceRequest.getFiatAmount());
         final var conversionDate = new Date();
 
@@ -43,7 +44,7 @@ public class CoinCalculatorServiceImpl implements CoinCalculatorService {
     }
 
     @Override
-    public TransactionServiceResponse store(TransactionServiceRequest request) {
+    public TransactionServiceResponse storeTransaction(TransactionServiceRequest request) {
         final var conversionTransactionEntity = new ConversionTransaction(request.getLastUpdatedAt(),
                 request.getCoinAmount(),
                 request.getCoinType().name(),
