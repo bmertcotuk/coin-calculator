@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * @author Mert Cotuk
@@ -19,13 +18,15 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 @NoArgsConstructor
-public class ConversionRestRequest {
+public class TransactionRestRequest {
     @NotNull(message = ApplicationStatusCodes.ERR_REQUIRED_FIELD)
-    private FiatCurrency fiatCurrency;
-    @Min(value = 25, message = ApplicationStatusCodes.ERR_INVALID_FIAT_AMOUNT)
-    @Max(value = 5000, message = ApplicationStatusCodes.ERR_INVALID_FIAT_AMOUNT)
+    private Date lastUpdatedAt;
     @NotNull(message = ApplicationStatusCodes.ERR_REQUIRED_FIELD)
-    private Double fiatAmount;
+    private Double coinAmount;
     @NotNull(message = ApplicationStatusCodes.ERR_REQUIRED_FIELD)
     private CryptoCurrency coinType;
+    @NotNull(message = ApplicationStatusCodes.ERR_REQUIRED_FIELD)
+    private FiatCurrency fiatCurrency;
+    @NotNull(message = ApplicationStatusCodes.ERR_REQUIRED_FIELD)
+    private Double fiatAmount;
 }

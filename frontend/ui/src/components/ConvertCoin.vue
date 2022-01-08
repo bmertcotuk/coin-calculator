@@ -46,7 +46,6 @@
               v-model="currencyTwo"
           >
             <option value="BTC">BTC</option>
-            <option value="ETH">ETH</option>
           </select>
         </div>
       </div>

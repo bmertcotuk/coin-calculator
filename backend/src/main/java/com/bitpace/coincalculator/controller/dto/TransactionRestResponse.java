@@ -2,7 +2,7 @@ package com.bitpace.coincalculator.controller.dto;
 
 import com.bitpace.coincalculator.model.CryptoCurrency;
 import com.bitpace.coincalculator.model.FiatCurrency;
-import com.bitpace.coincalculator.service.model.ConversionServiceResponse;
+import com.bitpace.coincalculator.service.model.TransactionServiceResponse;
 import lombok.*;
 
 import java.util.Date;
@@ -16,15 +16,15 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConversionRestResponse {
+public class TransactionRestResponse {
     private Date lastUpdatedAt;
     private Double coinAmount;
     private CryptoCurrency coinType;
     private FiatCurrency fiatCurrency;
     private Double fiatAmount;
 
-    public static ConversionRestResponse fromServiceResponse(ConversionServiceResponse serviceResponse) {
-        return ConversionRestResponse.builder()
+    public static TransactionRestResponse fromServiceResponse(TransactionServiceResponse serviceResponse) {
+        return TransactionRestResponse.builder()
                 .lastUpdatedAt(serviceResponse.getLastUpdatedAt())
                 .coinAmount(serviceResponse.getCoinAmount())
                 .coinType(serviceResponse.getCoinType())

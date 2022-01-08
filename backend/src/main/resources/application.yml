@@ -1,29 +1,41 @@
 server:
-    port: 8090
+  port: 8090
 
 spring:
-    datasource:
-        password: Qwer1234
-        url: jdbc:postgresql://db:5432/postgres
-        username: postgres
-    jpa:
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
-                jdbc:
-                    lob:
-                        non_contextual_creation: true
+  datasource:
+    password: Qwer1234
+#    url: jdbc:postgresql://db:5433/postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
 
 external-api:
-    exchange-rates:
-        base-url: https://blockchain.info/
+  exchange-rates:
+    base-url: https://blockchain.info/
 
 feign:
-    client:
-        config:
-            default:
-                connectTimeout: 5000
-                readTimeout: 5000
-                loggerLevel: basic
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+logging:
+  level:
+    com:
+      bitpace:
+        coincalculator: DEBUG
+    org:
+      springframework:
+        web: ERROR
+  pattern:
+    console: '%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %cyan([%logger{0}]) - %msg%n'
