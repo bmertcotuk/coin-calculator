@@ -21,10 +21,10 @@ public class ConversionTransaction {
     private Double coinAmount;
 
     @Column(name = "coinType")
-    private CryptoCurrency coinType;
+    private String coinType;
 
     @Column(name = "fiatCurrency")
-    private FiatCurrency fiatCurrency;
+    private String fiatCurrency;
 
     @Column(name = "fiatAmount")
     private Double fiatAmount;
@@ -33,8 +33,8 @@ public class ConversionTransaction {
 
     }
 
-    public ConversionTransaction(Date lastUpdatedAt, Double coinAmount, CryptoCurrency coinType,
-                                 FiatCurrency fiatCurrency, Double fiatAmount) {
+    public ConversionTransaction(Date lastUpdatedAt, Double coinAmount, String coinType,
+                                 String fiatCurrency, Double fiatAmount) {
         this.lastUpdatedAt = lastUpdatedAt;
         this.coinAmount = coinAmount;
         this.coinType = coinType;
@@ -62,19 +62,19 @@ public class ConversionTransaction {
         this.coinAmount = coinAmount;
     }
 
-    public CryptoCurrency getCoinType() {
+    public String getCoinType() {
         return coinType;
     }
 
-    public void setCoinType(CryptoCurrency coinType) {
+    public void setCoinType(String coinType) {
         this.coinType = coinType;
     }
 
-    public FiatCurrency getFiatCurrency() {
+    public String getFiatCurrency() {
         return fiatCurrency;
     }
 
-    public void setFiatCurrency(FiatCurrency fiatCurrency) {
+    public void setFiatCurrency(String fiatCurrency) {
         this.fiatCurrency = fiatCurrency;
     }
 

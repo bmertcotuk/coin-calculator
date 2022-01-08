@@ -39,3 +39,7 @@ logging:
         web: ERROR
   pattern:
     console: '%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %cyan([%logger{0}]) - %msg%n'
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

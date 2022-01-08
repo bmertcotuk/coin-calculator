@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 public class CoinCalculatorApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CoinCalculatorApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CoinCalculatorApplication.class, args);
+    }
 }

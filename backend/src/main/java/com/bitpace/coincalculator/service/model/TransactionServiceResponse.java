@@ -1,8 +1,6 @@
 package com.bitpace.coincalculator.service.model;
 
 import com.bitpace.coincalculator.model.ConversionTransaction;
-import com.bitpace.coincalculator.model.CryptoCurrency;
-import com.bitpace.coincalculator.model.FiatCurrency;
 import lombok.*;
 
 import java.util.Date;
@@ -19,8 +17,8 @@ import java.util.Date;
 public class TransactionServiceResponse {
     private Date lastUpdatedAt;
     private Double coinAmount;
-    private CryptoCurrency coinType;
-    private FiatCurrency fiatCurrency;
+    private String coinType;
+    private String fiatCurrency;
     private Double fiatAmount;
 
     public static TransactionServiceResponse fromEntity(ConversionTransaction conversionTransaction) {

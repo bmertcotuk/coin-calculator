@@ -57,6 +57,12 @@
           <small id="last-update-date">Lastly Updated: {{ this.lastUpdateDate }}</small>
         </div>
       </div>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <button @click="storeTransaction()">Store Transaction</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,12 +89,28 @@ export default {
         console.log('COUNTER: ' + this.countDown)
         setTimeout(() => {
           this.countDown -= 1
-          if(this.countDown === 0) {
+          if (this.countDown === 0) {
             this.calculateResults();
           }
           this.countDownTimer()
         }, 1000)
       }
+    },
+    storeTransaction() {
+      const request = {
+        lastUpdatedAt: this.lastUpdateDate,
+        coinAmount: this.amountTwo,
+        coinType: this.currencyTwo,
+        fiatCurrency: this.currencyOne,
+        fiatAmount: this.amountOne
+      }
+      CoinCalculatorService.store(request)
+          .then((data) => {
+            console.log(data)
+          })
+          .catch(e => {
+            console.log(e);
+          });
     },
     calculateResults() {
       if (this.amountOne < 25) {

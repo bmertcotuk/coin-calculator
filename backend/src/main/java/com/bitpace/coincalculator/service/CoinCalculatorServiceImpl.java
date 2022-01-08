@@ -46,8 +46,8 @@ public class CoinCalculatorServiceImpl implements CoinCalculatorService {
     public TransactionServiceResponse store(TransactionServiceRequest request) {
         final var conversionTransactionEntity = new ConversionTransaction(request.getLastUpdatedAt(),
                 request.getCoinAmount(),
-                request.getCoinType(),
-                request.getFiatCurrency(),
+                request.getCoinType().name(),
+                request.getFiatCurrency().name(),
                 request.getFiatAmount());
         final var persistedEntity = conversionTransactionRepository.save(conversionTransactionEntity);
         return TransactionServiceResponse.fromEntity(persistedEntity);
