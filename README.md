@@ -55,7 +55,7 @@ There are separate Docker files for backend and frontend. A docker compose file 
 | 5433 | Postgres DB        |
 
 #### External API Communication
-Feign client lets the application communicate with external APIs. Only `toBTC` method of [https://www.blockchain.com/api/exchange_rates_api](Exchange Rates API) has been used as it safely and simply meets the requirement of converting EUR or USD to BTC (ETH is out of scope). Feign configuration can be detailed as an improvement.
+Feign client lets the application communicate with external APIs. Only `toBTC` method of [Exchange Rates API](Exchange Rates API) has been used as it safely and simply meets the requirement of converting EUR or USD to BTC (ETH is out of scope). Feign configuration can be detailed as an improvement.
 
 #### Validation
 Jakarta Bean Validation annotations validates the request body attributes. Application raises validation specific errors for each field if the input is invalid.
@@ -84,6 +84,8 @@ The web application consists of a single page. VueJS has been used along with Ng
 The user can pick the fiat currency and fill the `Amount to spend` to see how much BTC they can receive. The user can also store the most recent successful transaction displayed on the UI by clicking on `Store Transaction` button. After clicking this button the transaction will be persisted to Postgres DB under a table named `CONVERSION_TRANSACTIONS`.
 
 There is a counter which refreshes itself every 10 seconds which is the price availability period. If the user focus gets out of the fiat amount (i.e. Amount to spend) input field or the fiat currency is changed or the counter reaches to 0 backend API is called. If the fiat amount is not in range `[25, 5000]` the value gets corrected with the closest limit before the API call occurs.
+
+Vuex toast messages could improve here by getting rid of the necessity of changing the focus from input field to somewhere else to have the calculation.
 
 ### Other
 * Application does not require any external configuration to be run.
