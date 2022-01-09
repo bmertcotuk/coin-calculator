@@ -2,6 +2,12 @@
 ## Introduction
 This documentation provides useful information about the implementation and setup of the project.
 
+## Business Requirements
+* User should be able to pick USD or EUR as a fiat currency.
+* User should be able to enter a fiat amount.
+* User should be able to see updated price every 10 seconds (price availability period).
+* User should be able to see how much BTC they receive along with coin type, date, and the input they provided if they sell the fiat amount.
+
 ## Technologies Used
 * Java 11
 * Spring Boot (Web, Security, Data JPA, Validation, Test)
@@ -30,12 +36,18 @@ docker-compose up
 ## Specifications
 ### Backend Side
 
+#### API
+A RESTful API has been implemented by using Spring Boot.
+
+#### DB
+Postgres DB keeps the records of successful conversions which are stored as transactions by the user.
+
 #### DB Communication
 Spring Data JPA provides the abstraction for the communication between the Postgres DB and the SpringBoot backend application.
 
 #### Containerization
 There are separate Docker files for backend and frontend. A docker compose file uses these files and also includes a Postgres DB image to create a ready-to-use application.
-##### Ports
+###### Ports
 | Port | Service            |
 |------|--------------------|
 | 8080 | VueJS Frontend     |
@@ -43,7 +55,7 @@ There are separate Docker files for backend and frontend. A docker compose file 
 | 5433 | Postgres DB        |
 
 #### External API Communication
-Feign client lets the application communicate with external APIs. Only `toBTC` method of [https://www.blockchain.com/api/exchange_rates_api](Exchange Rates API) has been used as it safely and simply meets the requirement of converting EUR or USD to BTC (ETH is out of scope).
+Feign client lets the application communicate with external APIs. Only `toBTC` method of [https://www.blockchain.com/api/exchange_rates_api](Exchange Rates API) has been used as it safely and simply meets the requirement of converting EUR or USD to BTC (ETH is out of scope). Feign configuration can be detailed as an improvement.
 
 #### Validation
 Jakarta Bean Validation annotations validates the request body attributes. Application raises validation specific errors for each field if the input is invalid.
