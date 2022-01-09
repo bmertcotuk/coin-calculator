@@ -55,7 +55,7 @@ There are separate Docker files for backend and frontend. A docker compose file 
 | 5433 | Postgres DB        |
 
 #### External API Communication
-Feign client lets the application communicate with external APIs. Only `toBTC` method of [Exchange Rates API](Exchange Rates API) has been used as it safely and simply meets the requirement of converting EUR or USD to BTC (ETH is out of scope). Feign configuration can be detailed as an improvement.
+Feign client lets the application communicate with external APIs. Only `toBTC` method of [Exchange Rates API](https://www.blockchain.com/api/exchange_rates_api) has been used as it safely and simply meets the requirement of converting EUR or USD to BTC (ETH is out of scope). Feign configuration can be detailed as an improvement.
 
 #### Validation
 Jakarta Bean Validation annotations validates the request body attributes. Application raises validation specific errors for each field if the input is invalid.
