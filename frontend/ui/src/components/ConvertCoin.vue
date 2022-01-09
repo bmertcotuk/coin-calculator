@@ -14,6 +14,7 @@
           <input
               class="currency-input"
               type="number"
+              min='25' max='5000'
               name="input-one"
               id="input-one"
               v-model="amountOne"
@@ -77,7 +78,7 @@ export default {
       data: [],
       currencyOne: "USD",
       currencyTwo: "BTC",
-      amountOne: 1,
+      amountOne: 25,
       amountTwo: 0,
       countDown : 10,
       lastUpdateDate: "-"
